@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: sans-serif;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #logo {
+            height: 100px;
+            width: 100px;
+            background-image: url(clapper-board.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #Welcome {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #6d0088;
+            padding: 0 10px;
+        }
+
+        .DivOfInput {
+            width: 100%;
+            height: 55px;
+            border-radius: 12px;
+            border: none;
+            background-color: #e1dada;
+            font-size: 1.1rem;
+            padding: 0 15px;
+            text-align: center;
+        }
+
+        .password-container {
+            width: 100%;
+            position: relative;
+        }
+
+        .password-input {
+            width: 100%;
+            height: 55px;
+            font-size: 1.1rem;
+            text-align: center;
+            border-radius: 12px;
+            border: none;
+            background-color: #e1dada;
+            padding: 0 15px;
+        }
+
+        .EyeOne {
+            height: 20px;
+            width: 20px;
+            background-image: url(close.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        #Login {
+            width: 100%;
+            height: 55px;
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            background-color: #89399d;
+            color: white;
+            cursor: pointer;
+        }
+
+        #Correct {
+            font-size: 0.9rem;
+            color: red;
+            align-self: flex-end;
+            display: none;
+        }
+
+        #Home {
+            font-size: 0.9rem;
+            color: dodgerblue;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+
+        .info-row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #orlogin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #6d0088;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        #orlogin::before,
+        #orlogin::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #6d0088;
+        }
+
+        #logocontainers {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 5px;
+        }
+
+        #logocontainers div {
+            height: 50px;
+            width: 50px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            cursor: pointer;
+        }
+
+        #facebook {
+            background-image: url(facebook.png);
+        }
+
+        #google {
+            background-image: url(google.png);
+        }
+
+        #apple {
+            background-image: url(apple-logo.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="logo"></div>
+        <h2 id="Welcome">Your favourite stories are waiting. Sign up in seconds.</h2>
+
+        <input type="text" id="Username" class="DivOfInput" placeholder="Enter your Username" />
+        <input type="email" id="Email" class="DivOfInput" placeholder="Enter your Email" />
+
+        <div class="password-container">
+            <input type="password" id="passwordOne" class="password-input" placeholder="Enter your Password" />
+            <div class="EyeOne" id="EyeOneOne"></div>
+        </div>
+
+        <div class="password-container">
+            <input type="password" id="ConPassword" class="password-input" placeholder="Confirm Password" />
+            <div class="EyeOne" id="EyeOneTwo"></div>
+        </div>
+
+        <div id="Login">Register</div>
+
+        <div class="info-row">
+            <p id="Home">Home</p>
+            <p id="Correct">Confirmed password did not match</p>
+        </div>
+
+        <div id="orlogin">
+            <div id="porlogintext">Or Login with</div>
+        </div>
+
+
+        <div id="logocontainers">
+            <div id="facebook"></div>
+            <div id="google"></div>
+            <div id="apple"></div>
+        </div>
+    </div>
+
+    <script>
+        function Aw() {
+            window.location.href = "awsnap.html";
+        }
+
+        let ar = Array.from(document.querySelectorAll("#logocontainers div"));
+        ar.forEach((e) => {
+            e.addEventListener('click', Aw)
+        })
+
+        document.getElementById("Home").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+
+        let EyeOne = document.getElementById("EyeOneOne");
+        let ShowpwOne = false;
+        let IsTouchOne = false;
+        function toggle(e) {
+            if (e === 1) {
+                ShowpwOne = !ShowpwOne;
+                if (ShowpwOne) {
+                    document.getElementById("passwordOne").type = "text";
+                    EyeOne.style.backgroundImage = "url(view.png)";
+                }
+                else {
+                    EyeOne.style.backgroundImage = "url(close.png)";
+                    document.getElementById("passwordOne").type = "password";
+
+                }
+            }
+            else if (e === 2) {
+                ShowpwTwo = !ShowpwTwo;
+                if (ShowpwTwo) {
+                    document.getElementById("ConPassword").type = "text";
+                    EyeTwo.style.backgroundImage = "url(view.png)";
+                }
+                else {
+                    EyeTwo.style.backgroundImage = "url(close.png)";
+                    document.getElementById("ConPassword").type = "password";
+
+                }
+            }
+        }
+        EyeOne.addEventListener('click', () => {
+            if (IsTouchOne) {
+                IsTouchOne = false;
+                return;
+            }
+            toggle(1);
+        });
+        EyeOne.addEventListener('touchstart', (e) => {
+            IsTouchOne = true;
+            e.preventDefault();
+            toggle(1);
+        }, { passive: false });
+
+        let EyeTwo = document.getElementById("EyeOneTwo");
+        let ShowpwTwo = false;
+        let IsTouchTwo = false;
+        EyeTwo.addEventListener('click', () => {
+            if (IsTouchTwo) {
+                IsTouchTwo = false;
+                return;
+            }
+            toggle(2);
+        });
+        EyeTwo.addEventListener('touchstart', (e) => {
+            IsTouchTwo = true;
+            e.preventDefault();
+            toggle(2);
+        }, { passive: false });
+
+        let InOne = document.getElementById("passwordOne");
+        InOne.addEventListener("input", () => {
+            document.getElementById("Correct").style.display = "none";
+            if (InOne.value.length >= 8) {
+                InOne.style.border = "2px green solid";
+            }
+            else if (InOne.value.length <= 8 && InOne.value.length > 0) {
+                InOne.style.border = "2px red solid";
+            }
+            else {
+                InOne.style.border = "";
+            }
+        })
+
+        let InTwo = document.getElementById("ConPassword");
+        InTwo.addEventListener("input", () => {
+            document.getElementById("Correct").style.display = "none";
+            if (InOne) {
+
+                if (InTwo.value.length >= 8 &&
+                    InOne.value === InTwo.value) {
+                    InTwo.style.border = "2px green solid";
+                }
+                else if (InTwo.value.length < 8 && InTwo.value.length > 0) {
+                    InTwo.style.border = "2px red solid";
+                }
+                else if (InOne.value !== InTwo.value) {
+                    InTwo.style.border = "2px red solid";
+
+                }
+                else {
+                    InTwo.style.border = "";
+                }
+            }
+        })
+        let User = document.getElementById("Username");
+        User.addEventListener("input", () => {
+            if (User.value !== "") {
+                User.style.border = "solid green 2px";
+            }
+        });
+
+        let Email = document.getElementById("Email");
+        Email.addEventListener("input", () => {
+            if (Email.value !== "") {
+                Email.style.border = "solid green 2px";
+            }
+        });
+
+        let Inputs = Array.from(document.querySelectorAll("input"));
+        let Logged = document.getElementById("Login");
+        Logged.addEventListener('click', () => {
+            let IsEmty = false;
+            Inputs.forEach((e) => {
+                if (e.value.trim() === "") {
+                    e.style.border = "red solid 2px";
+                    IsEmty = true;
+                }
+                else {
+                    e.style.border = "";
+                }
+            })
+            if (!IsEmty) {
+                if (InOne.value.trim() === InTwo.value.trim()) {
+                    Aw();
+                }
+                else {
+                    document.getElementById("Correct").style.display = "inline-block";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

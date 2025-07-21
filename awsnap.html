@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Not Available</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: sans-serif;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 400px;
+            height: 100%;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            text-align: center;
+        }
+
+        #logo {
+            height: 150px;
+            width: 150px;
+            background-image: url(clapper-board.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #text {
+            font-size: 2rem;
+            color: #89399d;
+        }
+
+        #msg {
+            font-size: 1.5rem;
+            color: #500064;
+            padding: 0 10px;
+        }
+
+        #HomeButton {
+            height: 60px;
+            width: 80%;
+            max-width: 350px;
+            background-color: #89399d;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #HomeButton:hover {
+            background-color: #a154b1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="logo"></div>
+        <h2 id="text">AW SNAP!!!</h2>
+        <h3 id="msg">This feature is not part of our service yet!</h3>
+        <div id="HomeButton">HOME</div>
+    </div>
+
+    <script>
+        document.getElementById("HomeButton").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+
+</html>

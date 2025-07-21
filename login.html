@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            font-family: sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #logo {
+            height: 100px;
+            width: 100px;
+            background-image: url(clapper-board.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+        }
+
+        #Welcome {
+            font-size: 1.5rem;
+            text-align: center;
+            color: #6d0088;
+        }
+
+        input {
+            height: 50px;
+            width: 100%;
+            font-size: 1.1rem;
+            text-align: center;
+            border-radius: 12px;
+            border: none;
+            background-color: #e1dada;
+        }
+
+        #eye {
+            height: 20px;
+            width: 20px;
+            background-image: url(close.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        #Forgot {
+            text-align: right;
+            color: dodgerblue;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        #Home {
+            text-align: left;
+            color: dodgerblue;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        #top-links {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #Login {
+            height: 55px;
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            background-color: #89399d;
+            color: white;
+            cursor: pointer;
+        }
+
+        #orlogin {
+            text-align: center;
+            color: #6d0088;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #orlogin::before,
+        #orlogin::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #6d0088;
+        }
+
+        #logocontainers {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        #logocontainers div {
+            height: 50px;
+            width: 50px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            cursor: pointer;
+        }
+
+        #facebook {
+            background-image: url(facebook.png);
+        }
+
+        #google {
+            background-image: url(google.png);
+        }
+
+        #apple {
+            background-image: url(apple-logo.png);
+        }
+        #displaymsg{
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <P id="displaymsg">
+        Password must be alteast 8 letters. 
+    </P>
+    <div class="container">
+        <div id="logo"></div>
+        <h2 id="Welcome">Welcome back! Login to pick up where you left off.</h2>
+
+        <input type="text" id="Username" placeholder="Enter your Username" />
+
+        <div class="password-container" id="password-container">
+            <input type="password" id="password" placeholder="Enter your Password" />
+            <div id="eye"></div>
+        </div>
+
+        <div id="top-links">
+            <p id="Home">Home</p>
+            <p id="Forgot">Forgot Password?</p>
+        </div>
+
+        <div id="Login">Login</div>
+
+        <div id="orlogin">
+            <div id="porlogintext">Or Login with</div>
+        </div>
+
+        <div id="logocontainers">
+            <div id="facebook"></div>
+            <div id="google"></div>
+            <div id="apple"></div>
+        </div>
+    </div>
+</body>
+<script>
+    let ar = Array.from(document.querySelectorAll("#logocontainers div"));
+    function Aw(){
+        window.location.href = "awsnap.html";
+    }
+    ar.forEach((e) => {
+        e.addEventListener('click', () => {
+            Aw()
+        })
+    })
+    let EYE = document.getElementById("eye");
+    EYE.addEventListener("mousedown", (e) => {
+        e.preventDefault(); 
+    });
+    
+    let Showpw = false;
+    let IsTouch = false;
+    function toggle(){
+        Showpw=!Showpw;
+        if (Showpw) {
+            document.getElementById("password").type = "text";
+            EYE.style.backgroundImage = "url(view.png)";
+        }
+        else {
+            EYE.style.backgroundImage = "url(close.png)";
+            document.getElementById("password").type = "password";
+
+        }
+    }
+    EYE.addEventListener('click',()=>{
+        if(IsTouch){
+            IsTouch=false;
+            return;
+        }
+        toggle();
+    });
+    EYE.addEventListener('touchstart', (e) => {
+        IsTouch=true;
+        e.preventDefault(); 
+        toggle();
+    }, { passive: false });
+    
+
+    document.getElementById("Home").addEventListener('click',()=>{
+        window.location.href = "index.html";
+    })
+    document.getElementById("Forgot").addEventListener('click',()=>{
+        Aw();
+    })
+    document.getElementById("Login").addEventListener('click',()=>{
+        if(document.getElementById("password").value.length >=8){
+            Aw();
+            document.getElementById('displaymsg').style.display="none";
+        }
+        else{
+            document.getElementById('displaymsg').style.display="inline-block";
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MainLogInPage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            font-family: sans-serif;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        #ImageOfSmtg {
+            height: 35vh;
+            width: 35vh;
+            background-color: aqua;
+            border-radius: 15%;
+            background-image: url(loginpageimage.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .button {
+            width: 100%;
+            height: 55px;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        #LogInPage {
+            background-color: #89399d;
+            color: white;
+            border: none;
+        }
+
+        #RegisterPage {
+            border: 2px solid #89399d;
+            background-color: white;
+            color: #89399d;
+        }
+
+        #AsGuest {
+            font-size: 1rem;
+            color: dodgerblue;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="ImageOfSmtg"></div>
+        <div id="LogInPage" class="button">Login</div>
+        <div id="RegisterPage" class="button">Register</div>
+        <p id="AsGuest">Continue as a guest</p>
+    </div>
+
+    <script>
+        document.getElementById("LogInPage").addEventListener("click", () => {
+            window.location.href="login.html";
+        });
+
+        document.getElementById("RegisterPage").addEventListener("click", () => {
+            window.location.href="signup.html";
+        });
+
+        document.getElementById("AsGuest").addEventListener("click", () => {
+            window.location.href = "awsnap.html";
+        });
+    </script>
+</body>
+
+</html>
